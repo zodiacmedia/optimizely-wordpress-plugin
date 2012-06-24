@@ -35,11 +35,11 @@ add_action('template_redirect', 'add_optimizely_script');
 
 function add_optimizely_script() {
   if ( empty( $project_code) ) {
-	  $project_code = get_option('optimizely_project_code');
-	  if ( !empty($project_code)) {
-  	  
-  	  $project_code_html = html_entity_decode($project_code);
-  	  $patterns = array('/\<script src="/','/"\>\<\/script\>/');
+    $project_code = get_option('optimizely_project_code');
+    if ( !empty($project_code)) {
+      
+      $project_code_html = html_entity_decode($project_code);
+      $patterns = array('/\<script src="/','/"\>\<\/script\>/');
       $projectScript = preg_replace($patterns, '', $project_code_html);
 
       if (!$_SERVER['HTTPS']) {
@@ -51,8 +51,8 @@ function add_optimizely_script() {
       wp_register_script( 'optimizely-script', $script);
       wp_enqueue_script('optimizely-script');
 
-	  }
-	}
+    }
+  }
 
 }
 
