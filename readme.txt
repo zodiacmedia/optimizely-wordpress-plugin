@@ -15,11 +15,13 @@ This plugin helps you configure your WordPress website to use Optimizely. After 
 
 Optimizely is a dramatically easier way for you to improve your website through A/B testing. Create an experiment in minutes with our easy-to-use visual interface with absolutely no coding or engineering required. Convert your website visitors into customers and earn more revenue today!
 
-You'll need an [Optimizely.com](http://www.optimizely.com) account  to use it.
+You'll need an [Optimizely.com](http://www.optimizely.com) account to use it.
 
 == Installation ==
 
-1. Upload the Optimizely plugin to your blog
+Sign up at [Optimizely.com](http://www.optimizely.com).
+
+1. Upload the Optimizely WordPress plugin to your blog
 2. Activate the plugin through the 'Plugins' menu in WordPress
 3. Enter your Optimizely project code in the plugin's settings page. 
 
