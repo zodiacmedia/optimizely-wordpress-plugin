@@ -1,14 +1,14 @@
 <?php
 /**
  * @package Optimizely
- * @version 3.5.0
+ * @version 3.5.1
  */
 /*
 Plugin Name: Optimizely
 Plugin URI: http://wordpress.org/extend/plugins/optimizely/
 Description: Simple, fast, and powerful.  <a href="http://www.optimizely.com">Optimizely</a> is a dramatically easier way for you to improve your website through A/B testing. Create an experiment in minutes with our easy-to-use visual interface with absolutely no coding or engineering required. Convert your website visitors into customers and earn more revenue today! To get started: 1) Click the "Activate" link to the left of this description, 2) Sign up for an <a href="http://www.optimizely.com">Optimizely account</a>, and 3) Create an API Token here: <a href="https://www.optimizely.com/tokens">API Tokens</a>, and enter your API token in the Configuration Tab of the Plugin, then select a project to start testing!
 Author: Optimizely Inc.
-Version: 3.5.0
+Version: 3.5.1
 Author URI: http://www.optimizely.com/
 License: GPL2
 */
@@ -80,14 +80,15 @@ function optimizely_add_script() {
 		// This cannot be escaped since optimizely_generate_script returns a script tag.
 		// The output of this script is fully escaped within the function below
 		echo optimizely_generate_script( $project_id );
-	}else if ( ! empty( $project_code ) && strpos($project_code,'js')){
-		// older versions used an old filled project_code. 
-		// If this field is filled out we will strip the ID out of the field and use that id
-		$project_id = substr($project_code,strpos($project_code,'js')+3);
-       	$project_id = substr($project_id,0,strpos($project_id,'js')-1);
-       	update_option('optimizely_project_id', $project_id);
-       	delete_option('optimizely_project_code');
-       	echo optimizely_generate_script( $project_id );
+	} else if ( ! empty( $project_code ) && false !== strpos( $project_code, 'js' ) && true !== WPCOM_IS_VIP_ENV ) {
+		// Older non-VIP sites used an old filled project_code. 
+		// If this field is filled out we will strip the ID out of the field and use that id.
+		// This will execute ONLY on non-VIP sites and is necessary for backwards compatibility.
+		$project_id = substr( $project_code, strpos( $project_code,'js' ) + 3 );
+		$project_id = substr( $project_id, 0, strpos( $project_id, 'js' ) -1 );
+		update_option( 'optimizely_project_id', absint( $project_id ) );
+		delete_option( 'optimizely_project_code' );
+		echo optimizely_generate_script( $project_id );
 	}
 }
 add_action( 'wp_head', 'optimizely_add_script', -1000 );
@@ -98,7 +99,7 @@ add_action( 'wp_head', 'optimizely_add_script', -1000 );
  * @return string
  */
 function optimizely_generate_script( $project_id ) {
-	return '<script src="//cdn.optimizely.com/js/' . absint( $project_id ) . '.js"></script>';
+	return '<script src="//cdn.optimizely.com/js/' . abs( floatval( $project_id ) ) . '.js"></script>';
 }
 
 /**
