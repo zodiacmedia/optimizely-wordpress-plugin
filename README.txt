@@ -3,7 +3,7 @@ Contributors: arthuracs, jonslaught, bradtaylorsf
 Tags: optimizely, ab testing, split testing, website optimization
 Requires at least: 3.0
 Tested up to: 4.0.1
-Stable tag: 3.5.1
+Stable tag: 3.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -29,6 +29,10 @@ You're ready to start using Optimizely!
 == Screenshots ==
 1. Create multiple headlines for each post
 2. View your results and launch winners directly from the dashboard
+
+= 3.5.2 =
+* Fixed issue where the powered testing number will only accept 2 digits
+* Fixed issue where pagenow can be undefined. Check to see if its undefined before displaying the page
 
 = 3.5.1 =
 * Fixed bug in optimizely.php that was preventing large snippet ids to render correctly
