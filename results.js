@@ -1,6 +1,6 @@
 ( function( $ ) {
 
-	function optimizelyResultsPage( apiToken, projectId, poweredVisitor ) {
+	function optimizelyResultsPage( apiToken, projectId ) {
 		var optly = new OptimizelyAPI( apiToken );	
 
 		// Fetch only Wordpress experiments from project
@@ -54,12 +54,12 @@
 
 		$( 'html' ).delegate( '.edit', 'click', function() {
 			var expID = $( this ).parents( '.opt_results' ).attr( 'data-exp-id' );
-			window.open( 'https://www.optimizely.com/edit?experiment_id=' + parseInt( expID ) );
+			window.open( 'https://app.optimizely.com/edit?experiment_id=' + parseInt( expID ) );
 		});
 
 		$( 'html' ).delegate( '.fullresults', 'click', function() {
 			var expID = $( this ).parents( '.opt_results' ).attr( 'data-exp-id' );
-			window.open( 'https://www.optimizely.com/results2?experiment_id=' + parseInt( expID ) );
+			window.open( 'https://app.optimizely.com/results2?experiment_id=' + parseInt( expID ) );
 		});
 
 		// Launch winning variation when Launch button is clicked
@@ -311,7 +311,7 @@
 
 	$( document ).ready(function() {
 		if (typeof pagenow != 'undefined' && 'toplevel_page_optimizely-config' == pagenow && '' != optimizelySettings.token && '' != optimizelySettings.projectId ) {
-			optimizelyResultsPage( optimizelySettings.token, optimizelySettings.projectId, optimizelySettings.visitorCount );
+			optimizelyResultsPage( optimizelySettings.token, optimizelySettings.projectId );
 		} else {
 			$( '#loading' ).hide();
 		}
