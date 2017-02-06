@@ -1,0 +1,29 @@
+{
+    "name"       : "zodiacmedia/optimizely-wordpress-plugin",
+    "type"       : "wordpress-plugin",
+    "description": "A WordPress plugin for integrating Optimizely with WordPress websites.",
+    "homepage"   : "https://github.com/zodiacmedia/optimizely-wordpress-plugin",
+    "license"    : "GPL-2.0+",
+
+    "authors": [
+        {
+            "name"    : "Zodiac Media",
+            "email"   : "info@zodiacmedia.co.uk",
+            "homepage": "https://www.zodiacmedia.co.uk",
+        },        
+    ],
+    
+    "keywords": [
+        "wordpress", 
+        "optimizely"
+    ],
+
+    "support": {
+        "issues": "https://github.com/zodiacmedia/optimizely-wordpress-plugin/issues",
+        "source": "https://github.com/zodiacmedia/optimizely-wordpress-plugin"
+    },
+
+    "require": {
+        "php": ">=5.4.0"
+    }
+}
