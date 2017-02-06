@@ -90,7 +90,7 @@ function optimizely_add_script() {
 		echo optimizely_generate_script( $project_id );
 	}
 }
-add_action( 'wp_head', 'optimizely_add_script', -1000 );
+add_action( 'wp_head', 'optimizely_add_script', 1000 );
 
 /**
  * Generates the Optimizely script tag.
